@@ -20,7 +20,7 @@ public class App {
         } else if (number.equals("2")) {
             Cli.cli();
             Even even = new Even();
-            even.StartGame(scanner, Cli.getName() );
+            even.startGame(scanner, Cli.getName());
         }
         scanner.close();
     }
