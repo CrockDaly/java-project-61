@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class AppTest {
-    @Test public void TestExample() {
+    @Test public void testExample() {
       assertTrue(true);
     }
 }
