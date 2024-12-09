@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 public class App {
     public static void main(String[] args) {
@@ -14,6 +15,7 @@ public class App {
                     2 - Even
                     3 - Calc
                     4 - GCD
+                    5 - Progression
                     0 - Exit
                     """);
           String choice = Engine.readInput("Your choice: ");
@@ -35,6 +37,11 @@ public class App {
               case "4" -> {
                   Engine.welcomeUser();
                   Engine.startGame("Find the greatest common divisor of given numbers.", new GCD());
+                  return;
+              }
+              case "5" -> {
+                  Engine.welcomeUser();
+                  Engine.startGame("What number is missing in the progression?", new Progression());
                   return;
               }
                   case "0" -> {
