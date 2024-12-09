@@ -7,7 +7,10 @@ public class Even {
 
     public static boolean run() {
         int number = (int) (Math.random() * MAX_RANDOM) + 1;
-        String answer = Engine.readInput("Question: Is this number even? " + number + "\nYour answer: ");
+
+        // Разделяем вопрос и запрос ответа на два отдельных вызова
+        Engine.printMessage("Question: " + number);  // Выводим только вопрос
+        String answer = Engine.readInput("Your answer: ");  // Запрашиваем ответ пользователя
 
         boolean correctAnswer = (number % 2 == 0);
 
