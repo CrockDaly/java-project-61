@@ -9,8 +9,11 @@ public class GCD {
     int num1 = (int) (Math.random() * MAX_RANDOM) + 1;
     int num2 = (int) (Math.random() * MAX_RANDOM) + 1;
 
-    // Выводим только вопрос
-    Engine.printMessage("Question: Find the greatest common divisor of " + num1 + " and " + num2);
+    // Общий вопрос
+    Engine.printMessage("Find the greatest common divisor of given numbers.");
+
+    // Вопрос с числами
+    Engine.printMessage("Question: " + num1 + " " + num2);
 
     // Запрашиваем ответ пользователя
     String answer = Engine.readInput("Your answer: ");
