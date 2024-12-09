@@ -3,22 +3,26 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Progression {
-    public static boolean run() {
-        int start = (int) (Math.random() * 50) + 1;
-        int step = (int) (Math.random() * 10) + 1;
-        int hiddenIndex = (int) (Math.random() * 10);
+    private static final int MAX_RANDOM_START = 50;
+    private static final int MAX_STEP = 10;
+    private static final int PROGRESSION_LENGTH = 10;
 
-        int[] progression = new int[10];
+    public static boolean run() {
+        int start = (int) (Math.random() * MAX_RANDOM_START) + 1;
+        int step = (int) (Math.random() * MAX_STEP) + 1;
+        int hiddenIndex = (int) (Math.random() * PROGRESSION_LENGTH);
+
+        int[] progression = new int[PROGRESSION_LENGTH];
         for (int i = 0; i < progression.length; i++) {
             progression[i] = start + i * step;
         }
         int correctAnswer = progression[hiddenIndex];
-        progression[hiddenIndex] = -1; // Заменяем скрытый элемент на -1
+        progression[hiddenIndex] = -1; // Скрытый элемент
 
         StringBuilder progressionString = new StringBuilder("Question: ");
         for (int i : progression) {
             if (i == -1) {
-                progressionString.append(".. ");  // Заменяем скрытое значение на "..."
+                progressionString.append(".. ");
             } else {
                 progressionString.append(i).append(" ");
             }

@@ -3,28 +3,29 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Prime {
+    private static final int MAX_RANDOM = 100;
+
     public static boolean run() {
-        int number = (int) (Math.random() * 100) + 1;
-        String correctAnswer = isPrime(number) ? "yes" : "no";
+        int number = (int) (Math.random() * MAX_RANDOM) + 1;
+        String answer = Engine.readInput("Question: Is this number prime? " + number + "\nYour answer: ");
 
-        Engine.printMessage("Question: " + number);
-        String answer = Engine.readInput("Your answer: ");
+        boolean correctAnswer = isPrime(number);
 
-        if (answer.equals(correctAnswer)) {
+        if (answer.equals(correctAnswer ? "yes" : "no")) {
             Engine.printMessage("Correct!");
             return true;
         } else {
-            Engine.printMessage("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+            Engine.printMessage("'" + answer + "' is wrong answer ;(. Correct answer was '" + (correctAnswer ? "yes" : "no") + "'.");
             return false;
         }
     }
 
-    public static boolean isPrime(int num) {
-        if (num <= 1) {
+    private static boolean isPrime(int number) {
+        if (number < 2) {
             return false;
         }
-        for (int i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
                 return false;
             }
         }

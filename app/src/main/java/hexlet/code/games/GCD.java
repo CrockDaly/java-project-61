@@ -3,13 +3,16 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class GCD {
+  private static final int MAX_RANDOM = 100;
+
   public static boolean run() {
-    int num1 = (int) (Math.random() * 100) + 1;
-    int num2 = (int) (Math.random() * 100) + 1;
+    int num1 = (int) (Math.random() * MAX_RANDOM) + 1;
+    int num2 = (int) (Math.random() * MAX_RANDOM) + 1;
+
+    String question = "Question: Find the greatest common divisor of " + num1 + " and " + num2 + "\nYour answer: ";
     int correctAnswer = findGCD(num1, num2);
 
-    Engine.printMessage("Question: " + num1 + " " + num2);
-    String answer = Engine.readInput("Your answer: ");
+    String answer = Engine.readInput(question);
 
     if (answer.equals(String.valueOf(correctAnswer))) {
       Engine.printMessage("Correct!");
@@ -20,12 +23,12 @@ public class GCD {
     }
   }
 
-  public static int findGCD(int num1, int num2) {
-    while (num2 != 0) {
-      int temp = num2;
-      num2 = num1 % num2;
-      num1 = temp;
+  private static int findGCD(int a, int b) {
+    while (b != 0) {
+      int temp = b;
+      b = a % b;
+      a = temp;
     }
-    return num1;
+    return a;
   }
 }
