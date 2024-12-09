@@ -8,8 +8,11 @@ public class Prime {
     public static boolean run() {
         int number = (int) (Math.random() * MAX_RANDOM) + 1;
 
-        // Выводим только вопрос
-        Engine.printMessage("Question: Is this number prime? " + number);
+        // Общий вопрос
+        Engine.printMessage("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+
+        // Вопрос с числом
+        Engine.printMessage("Question: " + number);
 
         // Запрашиваем ответ пользователя
         String answer = Engine.readInput("Your answer: ");
