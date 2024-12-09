@@ -56,4 +56,12 @@ import java.util.Scanner;
             return num1;
         }
 
+        public static int[] generateProgression (int arraySize, int firstElement, int progressionIndex) {
+            int[] progression = new int[arraySize];
+            for (int i = 0; i < arraySize; i++) {
+                progression[i] = firstElement + i * progressionIndex;
+            }
+            return progression;
+        }
+
     }
