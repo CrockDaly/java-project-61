@@ -23,9 +23,12 @@ public class Prime {
             Engine.printMessage("Correct!");
             return true;
         } else {
-            Engine.printMessage("'" + answer + "' is wrong answer ;(. Correct answer was '" + (correctAnswer ? "yes" : "no") + "'.");
+            String incorrectMessage = "'" + answer + "' is wrong answer ;(. ";
+            String correctMessage = "Correct answer was '" + (correctAnswer ? "yes" : "no") + "'.";
+            Engine.printMessage(incorrectMessage + correctMessage);
             return false;
         }
+
     }
 
     private static boolean isPrime(int number) {

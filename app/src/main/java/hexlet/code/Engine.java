@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Engine {
     private static String userName;
     private static final Scanner SCANNER = new Scanner(System.in);
-
+    private static final int MAX_ATTEMPTS = 3;  // Константа для максимального числа попыток
 
     public static void welcomeUser() {
         System.out.println("Welcome to the Brain Games!");
@@ -30,9 +30,9 @@ public class Engine {
     public static void startGame(String gameDescription, GameLogic gameLogic) {
         printMessage(gameDescription);
         int correctAnswersInARow = 0;
-        int maxAttempts = 3;
 
-        while (correctAnswersInARow < maxAttempts) {
+        // Используем константу MAX_ATTEMPTS
+        while (correctAnswersInARow < MAX_ATTEMPTS) {
             if (gameLogic.run()) {
                 correctAnswersInARow++;
             } else {

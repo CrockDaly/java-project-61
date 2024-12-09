@@ -8,9 +8,11 @@ public class Even {
     public static boolean run() {
         int number = (int) (Math.random() * MAX_RANDOM) + 1;
 
-        // Разделяем вопрос и запрос ответа на два отдельных вызова
-        Engine.printMessage("Question: " + number);  // Выводим только вопрос
-        String answer = Engine.readInput("Your answer: ");  // Запрашиваем ответ пользователя
+        // Выводим только вопрос
+        Engine.printMessage("Question: " + number);
+
+        // Запрашиваем ответ пользователя
+        String answer = Engine.readInput("Your answer: ");
 
         boolean correctAnswer = (number % 2 == 0);
 
@@ -18,8 +20,14 @@ public class Even {
             Engine.printMessage("Correct!");
             return true;
         } else {
-            Engine.printMessage("'" + answer + "' is wrong answer ;(. Correct answer was '" + (correctAnswer ? "yes" : "no") + "'.");
+            printIncorrectAnswer(answer, correctAnswer);
             return false;
         }
+    }
+
+    private static void printIncorrectAnswer(String answer, boolean correctAnswer) {
+        String incorrectMessage = "'" + answer + "' is wrong answer ;(. ";
+        String correctMessage = "Correct answer was '" + (correctAnswer ? "yes" : "no") + "'.";
+        Engine.printMessage(incorrectMessage + correctMessage);
     }
 }
