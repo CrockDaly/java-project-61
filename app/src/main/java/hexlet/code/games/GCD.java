@@ -9,10 +9,13 @@ public class GCD {
     int num1 = (int) (Math.random() * MAX_RANDOM) + 1;
     int num2 = (int) (Math.random() * MAX_RANDOM) + 1;
 
-    String question = "Question: Find the greatest common divisor of " + num1 + " and " + num2 + "\nYour answer: ";
-    int correctAnswer = findGCD(num1, num2);
+    // Выводим только вопрос
+    Engine.printMessage("Question: Find the greatest common divisor of " + num1 + " and " + num2);
 
-    String answer = Engine.readInput(question);
+    // Запрашиваем ответ пользователя
+    String answer = Engine.readInput("Your answer: ");
+
+    int correctAnswer = findGCD(num1, num2);
 
     if (answer.equals(String.valueOf(correctAnswer))) {
       Engine.printMessage("Correct!");

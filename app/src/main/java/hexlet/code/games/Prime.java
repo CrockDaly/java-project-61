@@ -7,7 +7,12 @@ public class Prime {
 
     public static boolean run() {
         int number = (int) (Math.random() * MAX_RANDOM) + 1;
-        String answer = Engine.readInput("Question: Is this number prime? " + number + "\nYour answer: ");
+
+        // Выводим только вопрос
+        Engine.printMessage("Question: Is this number prime? " + number);
+
+        // Запрашиваем ответ пользователя
+        String answer = Engine.readInput("Your answer: ");
 
         boolean correctAnswer = isPrime(number);
 
