@@ -20,10 +20,6 @@ import java.util.Scanner;
 
         }
 
-        public static String getUserName() {
-                return userName;
-            }
-
         public static String readInput(String prompt) {
             System.out.print(prompt);
             return scanner.nextLine();
@@ -64,4 +60,12 @@ import java.util.Scanner;
             return progression;
         }
 
+        public static boolean isPrime(int num, int[] primes) {
+            for (int prime : primes) {
+                if (prime == num) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
