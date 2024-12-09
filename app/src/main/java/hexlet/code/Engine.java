@@ -34,7 +34,7 @@ public class Engine {
         while (correctAnswersInARow < maxAttempts) {
             if (gameLogic.run()) {
                 correctAnswersInARow++;
-            } else {  // Если ответ неправильный
+            } else {
                 printMessage("Let's try again, " + userName + "!");
                 return;
             }

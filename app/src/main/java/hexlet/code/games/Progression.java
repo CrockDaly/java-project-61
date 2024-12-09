@@ -13,11 +13,15 @@ public class Progression {
             progression[i] = start + i * step;
         }
         int correctAnswer = progression[hiddenIndex];
-        progression[hiddenIndex] = 0;
+        progression[hiddenIndex] = -1; // Заменяем скрытый элемент на -1
 
         StringBuilder progressionString = new StringBuilder("Question: ");
         for (int i : progression) {
-            progressionString.append(i).append(" ");
+            if (i == -1) {
+                progressionString.append(".. ");  // Заменяем скрытое значение на "..."
+            } else {
+                progressionString.append(i).append(" ");
+            }
         }
 
         Engine.printMessage(progressionString.toString());
