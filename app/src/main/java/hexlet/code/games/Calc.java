@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 public class Calc {
     private static final int MAX_RANDOM_NUMBER = 20;
-    private static final int MIN_OPERATION = 4; // Мы хотим 4 операции, поэтому MIN_OPERATION должно быть 4.
+    private static final int MIN_OPERATION = 3; // Три операции: +, -, *
 
     public static boolean run() {
         int num1 = (int) (Math.random() * MAX_RANDOM_NUMBER);
@@ -12,28 +12,27 @@ public class Calc {
         int operation = (int) (Math.random() * MIN_OPERATION);
 
         int correctAnswer;
+        String operationSymbol;
 
         switch (operation) {
             case 0:
                 correctAnswer = num1 + num2;
+                operationSymbol = "+"; // Операция сложения
                 break;
             case 1:
                 correctAnswer = num1 - num2;
+                operationSymbol = "-"; // Операция вычитания
                 break;
             case 2:
                 correctAnswer = num1 * num2;
-                break;
-            case 3:
-                if (num2 == 0) {
-                    num2 = 1; // Чтобы избежать деления на ноль, можно заменить num2 на 1
-                }
-                correctAnswer = num1 / num2;
+                operationSymbol = "*"; // Операция умножения
                 break;
             default:
                 throw new IllegalArgumentException("Invalid operation");
         }
 
-        Engine.printMessage("Question: " + num1 + " ? " + num2);
+        // Формируем вопрос с операцией
+        Engine.printMessage("Question: " + num1 + " " + operationSymbol + " " + num2);
         String answer = Engine.readInput("Your answer: ");
 
         if (Integer.parseInt(answer) == correctAnswer) {
@@ -45,3 +44,4 @@ public class Calc {
         }
     }
 }
+
