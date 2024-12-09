@@ -2,37 +2,33 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Random;
+public class Progression {
+    public static boolean run() {
+        int start = (int) (Math.random() * 50) + 1;
+        int step = (int) (Math.random() * 10) + 1;
+        int hiddenIndex = (int) (Math.random() * 10);
 
-        public class Progression implements Engine.GameLogic {
-            private static final Random random = new Random();
-
-            @Override
-                public boolean playGround() {
-                    int firstElement = random.nextInt(20) + 1;
-                    int progressionIndex = random.nextInt(40) + 1;
-                    int arraySize = 10;
-
-                    int[] progressionArray = Engine.generateProgression(arraySize, firstElement, progressionIndex);
-                    int randomIndex = random.nextInt(arraySize);
-                    int hiddenArrayElement = progressionArray[randomIndex];
-
-                String progressionForUser = "";
-                for (int i = 0; i < arraySize; i++) {
-                    if (i == randomIndex) {
-                        progressionForUser += ".. ";
-                    } else {
-                        progressionForUser += progressionArray[i] + " ";
-                    }
-                }
-
-                Engine.printMessage("Question: " + progressionForUser );
-                String answer = Engine.readInput("Your answer: ");
-                if (!answer.equals(String.valueOf(hiddenArrayElement))) {
-                    Engine.printMessage("'" + answer + "' is wrong answer ;(. Correct answer was '" + hiddenArrayElement + "'.");
-                    return false;
-                }
-                Engine.printMessage("Correct!");
-                return true;
-            }
+        int[] progression = new int[10];
+        for (int i = 0; i < progression.length; i++) {
+            progression[i] = start + i * step;
         }
+        int correctAnswer = progression[hiddenIndex];
+        progression[hiddenIndex] = 0;
+
+        StringBuilder progressionString = new StringBuilder("Question: ");
+        for (int i : progression) {
+            progressionString.append(i).append(" ");
+        }
+
+        Engine.printMessage(progressionString.toString());
+        String answer = Engine.readInput("Your answer: ");
+
+        if (answer.equals(String.valueOf(correctAnswer))) {
+            Engine.printMessage("Correct!");
+            return true;
+        } else {
+            Engine.printMessage("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+            return false;
+        }
+    }
+}

@@ -2,70 +2,47 @@ package hexlet.code;
 
 import java.util.Scanner;
 
+public class Engine {
+    private static String userName;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-
-    public class Engine {
-        public interface  GameLogic {
-            boolean playGround();
-        }
-
-        private static String userName;
-        private static final Scanner scanner = new Scanner(System.in);
-
-        public static void welcomeUser (){
-            System.out.println("Welcome to the Brain Games!");
-            System.out.print("May I have your name? ");
-            userName = scanner.nextLine();
-            System.out.println("Hello, " + userName + "!");
-
-        }
-
-        public static String readInput(String prompt) {
-            System.out.print(prompt);
-            return scanner.nextLine();
-        }
-
-        public static void printMessage(String message) {
-            System.out.println(message);
-        }
-
-        public static void closeScanner() {
-            scanner.close();
-        }
-
-        public static void startGame(String gameDescription, GameLogic logic) {
-            printMessage(gameDescription);
-            for (int i = 0; i < 3; i++) {
-                if (!logic.playGround()) {
-                  printMessage("Let's try again, " + userName + "!");
-                    return;
-                }
-            }
-            printMessage("Congratulations, " + userName + "!");
-        }
-        public static int findGDC(int num1, int num2) {
-            while (num2 != 0) {
-                int temp = num2;
-                num2 = num1 % num2;
-                num1 = temp;
-            }
-            return num1;
-        }
-
-        public static int[] generateProgression (int arraySize, int firstElement, int progressionIndex) {
-            int[] progression = new int[arraySize];
-            for (int i = 0; i < arraySize; i++) {
-                progression[i] = firstElement + i * progressionIndex;
-            }
-            return progression;
-        }
-
-        public static boolean isPrime(int num, int[] primes) {
-            for (int prime : primes) {
-                if (prime == num) {
-                    return true;
-                }
-            }
-            return false;
-        }
+    public static void welcomeUser() {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        userName = SCANNER.nextLine();
+        System.out.println("Hello, " + userName + "!");
     }
+
+    public static String readInput(String prompt) {
+        System.out.print(prompt);
+        return SCANNER.nextLine();
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public static void closeScanner() {
+        SCANNER.close();
+    }
+
+    public static void startGame(String gameDescription, GameLogic gameLogic) {
+        printMessage(gameDescription);
+        int correctAnswersInARow = 0;
+        int maxAttempts = 3;
+
+        while (correctAnswersInARow < maxAttempts) {
+            if (gameLogic.run()) {
+                correctAnswersInARow++;
+            } else {  // Если ответ неправильный
+                printMessage("Let's try again, " + userName + "!");
+                return;
+            }
+        }
+        printMessage("Congratulations, " + userName + "!");
+    }
+
+    public interface GameLogic {
+        boolean run();
+    }
+}
